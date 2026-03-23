@@ -36,7 +36,14 @@ while attempts > 0:
     print(f"Intentos restantes: {attempts}")
     print(f"Letras usadas: {', '.join(guessed)}")
     
-    letter = input("Ingresá una letra: ")
+    # Verificar si el caracter es correcto
+    while True:
+        letter = input("Ingresá una letra: ")
+        # Verificar que el caracter ingresado sea una letra y sea solo un caracter
+        if letter.isalpha() and len(letter) == 1:
+            break
+        else:
+            print("Entrada no válida.")
     
     if letter in guessed:
         print("Ya usaste esa letra.")
