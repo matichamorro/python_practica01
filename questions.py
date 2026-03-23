@@ -1,22 +1,39 @@
 import random
 
-words = [
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
-]
+words = {
+    'tipos de datos': [
+        "variable",
+        "cadena",
+        "entero",
+        "lista"
+    ],
+    'programa': [
+        "programa",
+        "python",
+        "funcion",
+        "bucle",
+    ]
+}
 
-word = random.choice(words)
+def show_options(words):
+    for name, item in words.items():
+        print(f' - {name}')
+
 guessed = []
 attempts = 6
 
 print("¡Bienvenido al Ahorcado!")
 print()
+
+show_options(words)
+while True:
+    category = input('Elegí una categoría: ')
+    print()
+    if type(category) == type(str()) and category in words.keys():
+        word = random.choice(words[category])
+        break
+    else: 
+        print('Ingresá una categoría existente.')
 
 while attempts > 0:
     # Mostrar progreso: letras adivinadas y guiones para las que faltan
@@ -35,7 +52,7 @@ while attempts > 0:
         # Mostramos la puntuación final del jugador
         user = input('¡Ingresá 4 letras para registrarte!\n')
         points = attempts + 6
-        print(f'¡{user.upper()}: Tu puntaje fue de {points} de 12!')
+        print(f'¡{user[:4].upper()}: Tu puntaje fue de {points} de 12!')
         break
     
     print(f"Intentos restantes: {attempts}")
